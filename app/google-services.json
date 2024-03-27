@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "336936042007",
+    "project_id": "todoist-918",
+    "storage_bucket": "todoist-918.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336936042007:android:338de2ab3d172963e42652",
+        "android_client_info": {
+          "package_name": "com.example.todoist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3Q2bhSyWerf9pScZpRn_Dfgh2mh4mwE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

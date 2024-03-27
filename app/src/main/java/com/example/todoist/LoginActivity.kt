@@ -3,16 +3,20 @@ package com.example.todoist
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.todoist.databinding.ActivityLoginBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginBinding
+    private lateinit var database : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,9 +32,30 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.editTextPassword.text.toString()
 
         binding.btnNext.setOnClickListener {
-            UsernameNotExistDialog()
+            if(username.isNullOrEmpty()||password.isNullOrEmpty()){
+                Toast.makeText(this , "Fill all fields" , Toast.LENGTH_SHORT ).show()
+            }else {
+                FindUserInDatabase(username , password)
+            }
         }
 
+    }
+
+    private fun FindUserInDatabase(username: String, password: String) {
+        database = FirebaseDatabase.getInstance().getReference("users")
+        database.child("username").get().addOnSuccessListener {
+            if(it.exists()){
+
+            }else {
+                UsernameNotExistDialog()
+            }
+        }.addOnFailureListener {
+            showToast("Failed")
+        }
+    }
+
+    private fun showToast(string: String) {
+        Toast.makeText(this , string , Toast.LENGTH_SHORT ).show()
     }
 
     private fun UsernameNotExistDialog() {
