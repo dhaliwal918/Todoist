@@ -44,6 +44,8 @@ class LoginActivity : AppCompatActivity() {
         }).setNegativeButton("No" , DialogInterface.OnClickListener { dialog, which ->
             dialog.dismiss()
         })
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 
 }
