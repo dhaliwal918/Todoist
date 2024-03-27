@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Todoist</string>
+    <string name="wecome_in_todoist_app">Wecome in Todoist App</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="next">Next</string>
+    <string name="email">Email</string>
+</resources>
