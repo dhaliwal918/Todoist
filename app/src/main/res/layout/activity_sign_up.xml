@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".SignUpActivity">
 
@@ -38,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textColor="@color/black"
         android:inputType="text"
         android:hint="@string/email" />
 
@@ -52,6 +54,7 @@
         <EditText
             android:id="@+id/editTextUsername"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
@@ -71,81 +74,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:ems="10"
             android:inputType="textPassword"
             android:hint="@string/password" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <RadioGroup-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_margin="10sp"-->
-<!--        android:layout_height="wrap_content" >-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/radioButton"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="RadioButton" />-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/radioButton"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="RadioButton" />-->
-<!--        -->
-<!--    </RadioGroup>-->
-
-    <com.google.android.material.chip.ChipGroup
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_margin="10sp"
+        android:layout_height="wrap_content" >
 
-        <LinearLayout
+        <RadioButton
+            android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:textColor="@color/black"
+            android:text="RadioButton" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip1"
-                android:layout_width="40sp"
-                android:layout_height="40sp" />
-
-            <TextView
-                android:id="@+id/female"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_margin="10sp"
-                android:textColor="#000000"
-                android:text="Female" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <RadioButton
+            android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:textColor="@color/black"
+            android:text="RadioButton" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip"
-                android:layout_width="40sp"
-                android:layout_height="40sp" />
+    </RadioGroup>
 
-            <TextView
-                android:id="@+id/male"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_margin="10sp"
-                android:textColor="#000000"
-                android:text="Male" />
-
-        </LinearLayout>
-
-
-    </com.google.android.material.chip.ChipGroup>
 
     <TextView
         android:id="@+id/btnNext"

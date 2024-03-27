@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="120sp"
-            android:layout_height="120sp"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
             android:src="@drawable/todoist_icon"
             android:layout_margin="15sp"/>
 
