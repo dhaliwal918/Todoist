@@ -11,91 +11,130 @@
     android:gravity="center"
     tools:context=".LoginActivity">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="80sp"
-            android:layout_height="80sp"
-            android:src="@drawable/todoist_icon"
-            android:layout_margin="15sp"/>
-
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:text="@string/welcome_in_todoist_app" />
-    </LinearLayout>
+            android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="330sp"
-        app:srcCompat="@drawable/drawing_in_login" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginStart="30sp"
-        android:layout_marginEnd="30sp"
-        app:startIconDrawable="@drawable/baseline_person_24"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:src="@drawable/todoist_icon"
+                    android:layout_margin="15sp"/>
 
-        <EditText
-            android:id="@+id/editTextUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="@color/black"
-            android:inputType="text"
-            android:hint="@string/username" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text="@string/welcome_in_todoist_app" />
+            </LinearLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="330sp"
+                app:srcCompat="@drawable/drawing_in_login" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginStart="30sp"
-        android:layout_marginEnd="30sp"
-        android:layout_marginTop="10sp"
-        app:startIconDrawable="@drawable/baseline_lock_24"
-        app:endIconMode="password_toggle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginStart="30sp"
+                android:layout_marginEnd="30sp"
+                app:startIconDrawable="@drawable/baseline_person_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:textColor="@color/black"
-            android:inputType="textPassword"
-            android:hint="@string/password" />
+                <EditText
+                    android:id="@+id/editTextUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:textColor="@color/black"
+                    android:inputType="text"
+                    android:hint="@string/username" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/btnNext"
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        android:textSize="20sp"
-        android:layout_marginStart="30sp"
-        android:layout_marginEnd="30sp"
-        android:layout_marginTop="10sp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:background="@drawable/button_background"
-        android:text="Next" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginStart="30sp"
+                android:layout_marginEnd="30sp"
+                android:layout_marginTop="10sp"
+                app:startIconDrawable="@drawable/baseline_lock_24"
+                app:endIconMode="password_toggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:textColor="@color/black"
+                    android:inputType="textPassword"
+                    android:hint="@string/password" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:textSize="20sp"
+                android:layout_marginStart="30sp"
+                android:layout_marginEnd="30sp"
+                android:layout_marginTop="10sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@drawable/button_background"
+                android:text="Next" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:text="@string/not_have_account" />
+
+                <TextView
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:padding="5sp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/sign_up" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

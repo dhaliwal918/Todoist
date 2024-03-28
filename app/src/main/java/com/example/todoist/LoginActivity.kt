@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.todoist.databinding.ActivityLoginBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.getValue
 
 class LoginActivity : AppCompatActivity() {
 
@@ -32,20 +33,34 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.editTextPassword.text.toString()
 
         binding.btnNext.setOnClickListener {
-            if(username.isNullOrEmpty()||password.isNullOrEmpty()){
+            if(binding.editTextUsername.text.isNullOrEmpty()||binding.editTextPassword.text.isNullOrEmpty()){
                 Toast.makeText(this , "Fill all fields" , Toast.LENGTH_SHORT ).show()
             }else {
                 FindUserInDatabase(username , password)
             }
         }
 
+        binding.btnSignUp.setOnClickListener {
+            val intent = Intent(this , SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun FindUserInDatabase(username: String, password: String) {
         database = FirebaseDatabase.getInstance().getReference("users")
-        database.child("username").get().addOnSuccessListener {
+        database.child(binding.editTextUsername.text.toString()).get().addOnSuccessListener {
             if(it.exists()){
+                val usernameFD = it.child("username").value.toString()
+                val passwordFD = it.child("password").value.toString()
 
+                if(passwordFD == binding.editTextPassword.text.toString()){
+                    showToast("Successfully login")
+                    //intent
+                }else {
+                    showToast("Incorrect password")
+                    binding.editTextPassword.text.clear()
+                }
             }else {
                 UsernameNotExistDialog()
             }
@@ -54,19 +69,15 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun showToast(string: String) {
+    public fun showToast(string: String) {
         Toast.makeText(this , string , Toast.LENGTH_SHORT ).show()
     }
 
     private fun UsernameNotExistDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setIcon(R.drawable.baseline_browser_not_supported_24)
-        builder.setTitle("Username not found")
-        builder.setMessage("Are you want to add?")
-        builder.setPositiveButton("Yes" , DialogInterface.OnClickListener { dialog, which ->
-            val intent = Intent(this , SignUpActivity::class.java)
-            startActivity(intent)
-        }).setNegativeButton("No" , DialogInterface.OnClickListener { dialog, which ->
+        builder.setTitle("Username not Exist")
+        builder.setPositiveButton("OK" , DialogInterface.OnClickListener { dialog, which ->
             dialog.dismiss()
         })
         val alertDialog = builder.create()
@@ -74,3 +85,4 @@ class LoginActivity : AppCompatActivity() {
     }
 
 }
+
