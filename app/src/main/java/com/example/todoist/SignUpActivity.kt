@@ -29,25 +29,16 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.btnNext.setOnClickListener {
+            database = FirebaseDatabase.getInstance().getReference("users")
             if(binding.editTextUsername.text.isNullOrEmpty()||binding.editTextEmail.text.isNullOrEmpty()
                 ||binding.editTextPassword.text.isNullOrEmpty()) {
                 showToast("fill field")
             }else {
                 if (binding.maleRB.isChecked||binding.femaleRB.isChecked) {
                     if(binding.privacyCB.isChecked){
-                        val gender : String
-                        if (binding.femaleRB.isChecked) {
-                            gender = "female"
-                        }else
-                            gender = "male"
-                        writeDataToDatabase(gender)
+                        UserExists()
                     }else {
-                        val gender : String
-                        if (binding.femaleRB.isChecked) {
-                            gender = "female"
-                        }else
-                            gender = "male"
-                        writeDataToDatabase(gender)
+                        showToast("Please accept the privacy policy")
                     }
                 }else {
                     showToast("please check the radio button")
@@ -63,8 +54,24 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    private fun UserExists() {
+        database.child(binding.editTextUsername.text.toString()).get().addOnSuccessListener {
+            if(it.exists()){
+                showToast("Username not available")
+            }else {
+                val gender : String
+                if (binding.femaleRB.isChecked) {
+                    gender = "female"
+                }else
+                    gender = "male"
+                writeDataToDatabase(gender)
+            }
+        }.addOnFailureListener {
+            showToast("failed")
+        }
+    }
+
     private fun writeDataToDatabase(gender: String) {
-        database = FirebaseDatabase.getInstance().getReference("users")
 
         val data = DataClassForDatabase(binding.editTextEmail.text.toString() , binding.editTextUsername.text.toString() , binding.editTextPassword.text.toString() , gender)
 
