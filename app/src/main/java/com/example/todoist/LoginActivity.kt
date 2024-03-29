@@ -9,10 +9,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.todoist.MainActivities.MainListActivity
 import com.example.todoist.databinding.ActivityLoginBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.getValue
+import java.io.FileOutputStream
+import java.io.IOException
 
 class LoginActivity : AppCompatActivity() {
 
@@ -43,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
         binding.btnSignUp.setOnClickListener {
             val intent = Intent(this , SignUpActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
     }
@@ -55,8 +59,18 @@ class LoginActivity : AppCompatActivity() {
                 val passwordFD = it.child("password").value.toString()
 
                 if(passwordFD == binding.editTextPassword.text.toString()){
-                    showToast("Successfully login")
-                    //intent
+                    val fileName = "username.txt"
+                    try {
+                        val fileOutputStream = openFileOutput(fileName , MODE_PRIVATE)
+                        fileOutputStream.write(usernameFD.toByteArray())
+                        fileOutputStream.close()
+                    }catch (e : IOException) {
+                        e.printStackTrace()
+                        showToast("Failed")
+                    }
+                    val intent = Intent(this , MainListActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }else {
                     showToast("Incorrect password")
                     binding.editTextPassword.text.clear()

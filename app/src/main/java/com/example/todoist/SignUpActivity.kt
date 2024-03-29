@@ -7,10 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.todoist.MainActivities.MainListActivity
 import com.example.todoist.PrivacyActivity.PrivacyPolicyActivity
 import com.example.todoist.databinding.ActivitySignUpBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.io.IOException
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -77,6 +79,18 @@ class SignUpActivity : AppCompatActivity() {
 
         database.child(binding.editTextUsername.text.toString()).setValue(data).addOnSuccessListener {
             showToast("Successfully SignUp")
+            val fileName = "username.txt"
+            try {
+                val fileOutputStream = openFileOutput(fileName , MODE_PRIVATE)
+                fileOutputStream.write(binding.editTextUsername.text.toString().toByteArray())
+                fileOutputStream.close()
+            }catch (e : IOException) {
+                e.printStackTrace()
+                showToast("Failed")
+            }
+            val intent = Intent(applicationContext , MainListActivity::class.java)
+            startActivity(intent)
+            finish()
         }.addOnFailureListener {
             showToast("failed")
         }

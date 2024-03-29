@@ -10,14 +10,6 @@
     android:orientation="vertical"
     tools:context=".SignUpActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
 
             <ImageView
                 android:id="@+id/backButton"
@@ -150,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:textColor="#0000ff"
+                    android:textColor="#2D2DFF"
                     android:text="@string/privacy_policy" />
 
             </LinearLayout>
@@ -166,9 +158,5 @@
                 android:textColor="@color/white"
                 android:background="@drawable/button_background"
                 android:text="Next" />
-
-        </LinearLayout>
-    </ScrollView>
-
 
 </LinearLayout>
