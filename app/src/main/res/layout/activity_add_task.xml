@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".SignUpActivity">
+    android:background="@color/white"
+    tools:context=".AddTask.AddTaskActivity">
 
     <ImageView
         android:id="@+id/backButton"
@@ -24,59 +23,88 @@
         android:textSize="30sp"
         android:layout_margin="10sp"
         android:textColor="#000000"
-        android:text="Sign Up" />
+        android:text="Add Task" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_margin="10sp"
-        app:startIconDrawable="@drawable/baseline_email_24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editTextTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:textColor="@color/black"
             android:inputType="text"
-            android:hint="@string/email" />
+            android:hint="Title" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_margin="10sp"
-        app:startIconDrawable="@drawable/baseline_person_24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/editTextUsername"
+            android:id="@+id/editTextDescription"
             android:layout_width="match_parent"
             android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:hint="@string/username" />
+            android:hint="@string/description" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_margin="10sp"
-        app:startIconDrawable="@drawable/baseline_lock_24"
-        app:endIconMode="password_toggle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/editTextDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black"
             android:ems="10"
             android:inputType="textPassword"
-            android:hint="@string/password" />
+            android:hint="Date (DD/MM/YYYY)" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editTextTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Time (HH:MM)" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editTextID"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="ID (Unique)" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,64 +119,45 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="0dp"
-            android:textSize="30sp"
-            android:layout_marginStart="20sp"
-            android:layout_marginEnd="20sp"
+            android:textSize="22sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:textColor="@color/black"
             android:layout_gravity="center"
-            android:text="Gender : " />
+            android:text="Priority : " />
 
         <RadioButton
-            android:id="@+id/maleRB"
+            android:id="@+id/highRB"
             android:layout_width="0sp"
             android:layout_weight="1"
             android:textSize="20sp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="@string/male" />
+            android:text="High" />
 
         <RadioButton
-            android:id="@+id/femaleRB"
+            android:id="@+id/MedRB"
             android:layout_width="0sp"
             android:layout_weight="1"
             android:textSize="20sp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="@string/female" />
+            android:text="Med" />
+
+        <RadioButton
+            android:id="@+id/lowRB"
+            android:layout_width="0sp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Low" />
 
     </RadioGroup>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/privacyCB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_marginEnd="10sp"
-            android:text="@string/i_read_all_this_" />
-
-        <TextView
-            android:id="@+id/privacyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="#2D2DFF"
-            android:text="@string/privacy_policy" />
-
-    </LinearLayout>
-
     <TextView
-        android:id="@+id/btnNext"
+        android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="60sp"
         android:textSize="20sp"
@@ -157,6 +166,6 @@
         android:gravity="center"
         android:textColor="@color/white"
         android:background="@drawable/button_background"
-        android:text="Next" />
+        android:text="ADD" />
 
 </LinearLayout>

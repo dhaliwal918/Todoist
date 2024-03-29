@@ -15,4 +15,6 @@
     <string name="gdpr_compliance_todoist_is_fully_compliant_with_the_general_data_protection_regulation_gdpr_as_of_may_25th_2018_for_the_complete_privacy_policy_please_visit_the_official_todoist_privacy_policy_page_please_note_that_this_is_a_simplified_summary_and_i_recommend_reviewing_the_full_policy_for_comprehensive_details">## GDPR Compliance - Todoist is fully compliant with the **General Data Protection Regulation (GDPR)** as of May 25th, 2018. --- For the complete privacy policy, please visit the official Todoist Privacy Policy page. Please note that this is a simplified summary, and I recommend reviewing the full policy for comprehensive details.</string>
     <string name="not_have_account">Not Have Account?</string>
     <string name="sign_up">Sign Up</string>
+    <string name="priority">Priority : </string>
+    <string name="description">Description</string>
 </resources>
