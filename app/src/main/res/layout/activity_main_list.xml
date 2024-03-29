@@ -28,19 +28,29 @@
             android:text="Tasks" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/btnReload"
             android:layout_width="40sp"
             android:layout_height="40sp"
             android:layout_marginEnd="20sp"
             android:clickable="true"
-            app:srcCompat="@drawable/plus"
-            android:focusable="true" />
+            android:focusable="true"
+            app:srcCompat="@drawable/reload" />
+
+        <ImageView
+            android:id="@+id/btnAdd"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginEnd="20sp"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/plus" />
     </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="0sp"
-
+        android:id="@+id/listView"
+        tools:listitem="@layout/todo_list_view_layout"
         android:layout_weight="1"/>
 
 </LinearLayout>
