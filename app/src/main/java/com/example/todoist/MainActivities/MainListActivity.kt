@@ -12,8 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.todoist.AddTask.AddTaskActivity
+import com.example.todoist.CustomAdapter
 import com.example.todoist.LoginActivity
 import com.example.todoist.R
+import com.example.todoist.TaskData
 import com.example.todoist.databinding.ActivityMainListBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -32,6 +34,8 @@ class MainListActivity : AppCompatActivity() {
     private lateinit var timeArrayList : ArrayList<String>
     private lateinit var dateArrayList : ArrayList<String>
 
+    private lateinit var userDataArrayList : ArrayList<TaskData>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +48,11 @@ class MainListActivity : AppCompatActivity() {
             insets
         }
 
-        // len is used to find
+        titleArrayList = ArrayList()
+        descriptionArrayList = ArrayList()
+        dateArrayList = ArrayList()
+        timeArrayList = ArrayList()
+        priorityArrayList = ArrayList()
 
         database = FirebaseDatabase.getInstance().getReference("tasks")
         val idsList = readIdsFromFile(this , "all_ids.txt")
@@ -52,10 +60,10 @@ class MainListActivity : AppCompatActivity() {
         while(i!=customLen(idsList)){
             database.child(getUsername()).child(idsList[i]).get().addOnSuccessListener {
                 titleArrayList.add(it.child("title").value.toString())
-                descriptionArrayList.add(it.child("title").value.toString())
-                priorityArrayList.add(it.child("title").value.toString())
-                timeArrayList.add(it.child("title").value.toString())
-                dateArrayList.add(it.child("title").value.toString())
+                descriptionArrayList.add(it.child("description").value.toString())
+                priorityArrayList.add(it.child("priority").value.toString())
+                timeArrayList.add(it.child("dueTime").value.toString())
+                dateArrayList.add(it.child("dueDate").value.toString())
             }.addOnFailureListener {
                 showToast("Failed")
             }
@@ -85,19 +93,31 @@ class MainListActivity : AppCompatActivity() {
     }
 
     private fun showDataOnListView() {
+        userDataArrayList = ArrayList()
 
-
-        val taskList = readIdsFromFile(this , "all_ids.txt")
-        val listView = binding.listView
-
-        val adapterForMyListView = ArrayAdapter(this, android.R.layout.simple_list_item_1, taskList)
-        listView.adapter = adapterForMyListView
-
-        listView.setOnItemClickListener { parent, view, position, id ->
-
-            val text = "Clicked on item : " + (view as TextView).text.toString()
-            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        for (i in 0 until customLen(titleArrayList)) {
+            println("Index $i:")
+            println("Title: ${titleArrayList[i]}")
+            println("Description: ${descriptionArrayList[i]}")
+            // ... print other properties as needed
+            val taskData = TaskData(titleArrayList[i], descriptionArrayList[i], dateArrayList[i], timeArrayList[i], priorityArrayList[i])
+            userDataArrayList.add(taskData)
         }
+
+
+//        var i = 0
+//        while (i != customLen(titleArrayList)){
+//            val taskData = TaskData(titleArrayList[i] , descriptionArrayList[i] , dateArrayList[i] , timeArrayList[i] , priorityArrayList[i] )
+//
+//            userDataArrayList.add(taskData)
+//        }
+
+        val listView = binding.listView
+        listView.isClickable = true
+
+        listView.adapter = CustomAdapter(this, userDataArrayList)
+
+
 
     }
 

@@ -108,7 +108,7 @@ class AddTaskActivity : AppCompatActivity() {
             showToast("failed")
             ans = false
         }
-        return ans
+        return !ans
     }
 
     private fun showToast(string: String) {
